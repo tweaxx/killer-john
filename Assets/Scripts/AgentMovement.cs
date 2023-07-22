@@ -5,11 +5,13 @@ public class AgentMovement : MovementBase
 {
     public NavMeshAgent NavMesh => _agent;
 
+    [Space]
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private bool useInput;
 
     private Vector3 _target;
     private NavMeshAgent _agent;
+    private Patrol _patrol;
 
     private Vector3 _normalScale = Vector3.one;
     private Vector3 _flippedScale = new Vector3(-1,1,1);
@@ -20,6 +22,7 @@ public class AgentMovement : MovementBase
 
         useInput = GetComponent<Player>() != null;
 
+        _patrol = GetComponent<Patrol>();
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
@@ -54,7 +57,7 @@ public class AgentMovement : MovementBase
 
     private void SetAgentPosition()
     {
-        _agent.SetDestination(new Vector3(_target.x, _target.y, transform.position.z));
+        _agent.SetDestination(new Vector3(_target.x, _target.y, 0));
     }
 
     public void SetTarget(Vector2 position)
@@ -68,5 +71,24 @@ public class AgentMovement : MovementBase
 
         if (gameObject.activeInHierarchy)
             _agent.isStopped = !CanMove;
+    }
+
+    public override void RunAway()
+    {
+        base.RunAway();
+
+        if (_patrol != null)
+        {
+            _patrol.Timeout();
+
+            if (gameObject.activeInHierarchy)
+            {
+                _agent.SetDestination((Random.insideUnitCircle + Vector2.one * 0.5f) * _runAwayRadius);
+                _agent.speed = RunAwaySpeed;
+            }
+
+            var health = GetComponent<Health>();
+            health.Restore();
+        }
     }
 }

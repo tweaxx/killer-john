@@ -98,8 +98,9 @@ public class MeleeKillAbility : MonoBehaviour
 
         target.SetMovementState(true);
         owner.SetMovementState(true);
+        _animator.SetBool(IS_KILLING, isKilling);
 
-        Debug.Log($"{target} struggled free");
+        target.Movement.RunAway();
 
         target = null;
     }

@@ -32,4 +32,9 @@ public class Health : MonoBehaviour
             OnDied?.Invoke();
         }
     }
+
+    public void Restore()
+    {
+        health = maxHealth;
+    }
 }

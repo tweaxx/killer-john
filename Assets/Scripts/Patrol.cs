@@ -25,9 +25,14 @@ public class Patrol : MonoBehaviour
         _currentTime = Random.Range(waitMin, waitMax);
     }
 
-    private Vector2 GetRandomPoint()
+    public void Timeout()
     {
-        return Random.insideUnitCircle * radius;
+        _currentTime = waitMax;
+    }
+
+    public Vector2 GetRandomPoint()
+    {
+        return (Vector2)transform.position + Random.insideUnitCircle * radius;
     }
 
     private void Update()
@@ -44,6 +49,7 @@ public class Patrol : MonoBehaviour
             {
                 SetTime();
                 _agentMovement.SetTarget(GetRandomPoint());
+                _agentMovement.NavMesh.speed = _agentMovement.Speed;
             }
         }
     }

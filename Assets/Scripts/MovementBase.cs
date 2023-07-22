@@ -7,6 +7,13 @@ public class MovementBase : MonoBehaviour
     [field: SerializeField]
     public bool IsMoving { get; protected set; }
 
+    public float Speed => _speed;
+    public float RunAwaySpeed => _runAwaySpeed;
+
+    [SerializeField] protected float _speed = 0.7f;
+    [SerializeField] protected float _runAwaySpeed = 1.4f;
+    [SerializeField] protected float _runAwayRadius = 5f;
+
     private Animator _animator;
 
     private const string RUN = "Run";
@@ -24,5 +31,10 @@ public class MovementBase : MonoBehaviour
     public virtual void SetMovement(bool isEnabled)
     {
         CanMove = isEnabled;
+    }
+
+    public virtual void RunAway()
+    {
+
     }
 }

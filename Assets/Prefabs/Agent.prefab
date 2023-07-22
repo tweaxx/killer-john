@@ -144,6 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d62b6b7cfe24348ab84d6eeb61f2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanMove>k__BackingField: 1
+  <IsMoving>k__BackingField: 0
+  _speed: 0.7
+  _runAwaySpeed: 1.4
+  _runAwayRadius: 5
   _renderer: {fileID: 7613145711270897660}
   useInput: 0
 --- !u!114 &7613145711270897663
@@ -160,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 10
+  damageColor: {r: 0.99215686, g: 0.36078432, b: 0.36078432, a: 1}
 --- !u!114 &3416906572803987440
 MonoBehaviour:
   m_ObjectHideFlags: 0

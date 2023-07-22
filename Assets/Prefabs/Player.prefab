@@ -160,6 +160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3e6395eaf91f94a81a62cfa492706e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanMove>k__BackingField: 1
+  <IsMoving>k__BackingField: 0
+  _speed: 0.7
+  _runAwaySpeed: 1.4
+  _runAwayRadius: 5
   moveSpeed: 1.5
   _renderer: {fileID: 3905725081908079298}
 --- !u!114 &3905725081908079302
@@ -176,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 10
+  damageColor: {r: 0.990566, g: 0.35884652, b: 0.35884652, a: 1}
 --- !u!114 &3905725081908079303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,8 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6051a03c77e7974eaed39a779d69433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  struggleFreeTime: 1
   usageRadius: 0.5
   damage: 1
+  targetOffset: {x: 0.12599999, y: -0.014999986, z: 0}
   useInput: 0
   isKilling: 0
   owner: {fileID: 0}

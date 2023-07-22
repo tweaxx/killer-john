@@ -99,6 +99,8 @@ public class MeleeKillAbility : MonoBehaviour
         target.SetMovementState(true);
         owner.SetMovementState(true);
         _animator.SetBool(IS_KILLING, isKilling);
+        _animator.ResetTrigger(KILL_START);
+        _animator.ResetTrigger(KILL);
 
         target.Movement.RunAway();
 

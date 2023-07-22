@@ -113,6 +113,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -337,15 +349,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      village2_0: 1518318881
-      village2_1: 1264025341
-      village2_2: 542472493
-      village2_3: -1822846128
       village2_4: 1348698838
-      village2_5: 272129032
-      village2_6: -1448655065
-      village2_7: 1267751132
       village2_8: 763898128
+      village2_2: 542472493
+      village2_6: -1448655065
+      village2_1: 1264025341
+      village2_3: -1822846128
+      village2_5: 272129032
+      village2_7: 1267751132
+      village2_0: 1518318881
       village2_9: -674446400
   spritePackingTag: 
   pSDRemoveMatte: 0

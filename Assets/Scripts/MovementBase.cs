@@ -37,4 +37,9 @@ public class MovementBase : MonoBehaviour
     {
 
     }
+
+    public virtual void SetFlipX(bool value)
+    {
+        
+    }
 }

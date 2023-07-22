@@ -43,8 +43,13 @@ public class AgentMovement : MovementBase
         SetTargetPosition();
         SetAgentPosition();
 
-        if (_agent.velocity.x != 0)
+        if (_agent.velocity.x != 0 && CanMove)
             transform.localScale = _agent.velocity.x < 0 ? _flippedScale : _normalScale;
+    }
+
+    public override void SetFlipX(bool value)
+    {
+        transform.localScale = value ? _flippedScale : _normalScale;
     }
 
     private void SetTargetPosition()

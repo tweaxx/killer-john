@@ -78,6 +78,7 @@ public class MeleeKillAbility : MonoBehaviour
 
             var flipX = GetComponent<SpriteRenderer>().flipX;
             target.transform.position = transform.position + (flipX ? -targetOffset : targetOffset);
+            target.Movement.SetFlipX(flipX);
 
             if (!wasKilling)
                 _animator.SetTrigger(KILL_START);

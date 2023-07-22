@@ -10211,6 +10211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visor: {fileID: 1252868197}
+  gun: {fileID: 352210067}
+  timeToShoot: 0.3
+  canShoot: 0
 --- !u!4 &8715548865868315921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7613145711270897635, guid: 20a77eddac8abab41944651ae5b47352, type: 3}

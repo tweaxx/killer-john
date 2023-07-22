@@ -35,17 +35,16 @@ public class Movement : MovementBase
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        _moveDirection = new Vector2(moveX, moveY).normalized;
+        _moveDirection = CanMove ? new Vector2(moveX, moveY).normalized : Vector2.zero;
 
         if (_renderer != null && moveX != 0)
             _renderer.flipX = moveX < 0;
 
-        IsMoving = CanMove && (moveX != 0 || moveY != 0);
+        IsMoving = CanMove && (_moveDirection.x != 0 || _moveDirection.y != 0);
     }
 
     private void Move()
     {
-        if (CanMove)
-            _rigidbody.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * moveSpeed;
+        _rigidbody.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * moveSpeed;
     }
 }

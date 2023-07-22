@@ -19,7 +19,7 @@ public class Policeman : Unit
     {
         if (obj.TryGetComponent(out Player player))
         {
-            Debug.Log($"{name} spotted Player!");
+            //Debug.Log($"{name} spotted Player!");
         }
     }
 

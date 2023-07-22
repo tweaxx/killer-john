@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement : MovementBase
 {
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private SpriteRenderer _renderer;
@@ -8,19 +8,18 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Vector2 _moveDirection;
 
-    private Animator _animator;
-
-    private const string RUN = "Run";
-
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
+        
     }
 
-    private void Update()
+    protected override void Update()
     {
         ProcessInputs();
+
+        base.Update();
     }
 
     private void FixedUpdate()
@@ -41,11 +40,12 @@ public class Movement : MonoBehaviour
         if (_renderer != null && moveX != 0)
             _renderer.flipX = moveX < 0;
 
-        _animator.SetBool(RUN, moveX != 0 || moveY != 0);
+        IsMoving = CanMove && (moveX != 0 || moveY != 0);
     }
 
     private void Move()
     {
-        _rigidbody.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * moveSpeed;
+        if (CanMove)
+            _rigidbody.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * moveSpeed;
     }
 }

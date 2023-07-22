@@ -8,7 +8,7 @@ public class Unit : MonoBehaviour
     public static event Action<Unit> OnDestroyed;
 
     public Health Health { get; private set; }
-    public AgentMovement AgentMovement { get; private set; }
+    public MovementBase Movement { get; private set; }
 
     protected virtual void Awake()
     {
@@ -16,7 +16,13 @@ public class Unit : MonoBehaviour
         Health.OnDamaged += OnDamaged;
         Health.OnDied += OnDied;
 
-        AgentMovement = GetComponent<AgentMovement>();
+        Movement = GetComponent<MovementBase>();
+    }
+
+    public void SetMovementState(bool canMove)
+    {
+        if (Movement != null)
+            Movement.SetMovement(canMove);
     }
 
     private void OnDamaged()

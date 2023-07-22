@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AgentMovement : MonoBehaviour
+public class AgentMovement : MovementBase
 {
     public NavMeshAgent NavMesh => _agent;
-    public bool CanMove { get; private set; } = true;
 
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private bool useInput;
@@ -15,8 +14,10 @@ public class AgentMovement : MonoBehaviour
     private Vector3 _normalScale = Vector3.one;
     private Vector3 _flippedScale = new Vector3(-1,1,1);
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         useInput = GetComponent<Player>() != null;
 
         _agent = GetComponent<NavMeshAgent>();
@@ -24,10 +25,15 @@ public class AgentMovement : MonoBehaviour
         _agent.updateUpAxis = false;
 
         _target = transform.position;
+
     }
 
-    private void Update()
+    protected override void Update()
     {
+        IsMoving = CanMove && (_agent.velocity.x != 0 || _agent.velocity.y != 0);
+
+        base.Update();
+
         if (!CanMove)
             return;
 
@@ -56,19 +62,11 @@ public class AgentMovement : MonoBehaviour
         _target = position;
     }
 
-    public void Stop()
+    public override void SetMovement(bool isEnabled)
     {
+        base.SetMovement(isEnabled);
+
         if (gameObject.activeInHierarchy)
-            _agent.isStopped = true;
-
-        CanMove = false;
-    }
-
-    public void Resume()
-    {
-        if (gameObject.activeInHierarchy)
-            _agent.isStopped = false;
-
-        CanMove = true;
+            _agent.isStopped = !CanMove;
     }
 }

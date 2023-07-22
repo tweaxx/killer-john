@@ -73,8 +73,7 @@ public class MeleeKillAbility : MonoBehaviour
         {
             target.Health.TakeDamage(damage);
 
-            if (target.AgentMovement != null)
-                target.AgentMovement.Stop();
+            target.SetMovementState(false);
 
             var flipX = GetComponent<SpriteRenderer>().flipX;
             target.transform.position = transform.position + (flipX ? -targetOffset : targetOffset);
@@ -96,8 +95,7 @@ public class MeleeKillAbility : MonoBehaviour
         if (target == null)
             return;
 
-        if (target.AgentMovement != null)
-            target.AgentMovement.Resume();
+        target.SetMovementState(true);
 
         target = null;
     }

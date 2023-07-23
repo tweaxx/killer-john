@@ -8,6 +8,7 @@ public class AgentMovement : MovementBase
     [Space]
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private bool useInput;
+    [SerializeField] private bool debug;
 
     private Vector3 _target;
     private NavMeshAgent _agent;
@@ -44,7 +45,12 @@ public class AgentMovement : MovementBase
         SetAgentPosition();
 
         if (_agent.velocity.x != 0 && CanMove)
+        {
             transform.localScale = _agent.velocity.x < 0 ? _flippedScale : _normalScale;
+
+            if (debug)
+                Debug.Log($"flipx: {(_agent.velocity.x < 0)}");
+        }
     }
 
     public override void SetFlipX(bool value)

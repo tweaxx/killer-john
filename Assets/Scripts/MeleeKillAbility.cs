@@ -73,12 +73,20 @@ public class MeleeKillAbility : MonoBehaviour
         {
             target.Health.TakeDamage(damage);
 
-            target.SetMovementState(false);
-            owner.SetMovementState(false);
-
             var flipX = GetComponent<SpriteRenderer>().flipX;
-            target.transform.position = transform.position + (flipX ? -targetOffset : targetOffset);
-            target.Movement.SetFlipX(flipX);
+
+            if (target is Policeman)
+            {
+                target.Provoke(owner, 1f);
+            }
+            {
+                target.SetMovementState(false);
+
+                target.transform.position = transform.position + (flipX ? -targetOffset : targetOffset);
+                target.Movement.SetFlipX(flipX);
+            }
+
+            owner.SetMovementState(false);
 
             if (!wasKilling)
                 _animator.SetTrigger(KILL_START);

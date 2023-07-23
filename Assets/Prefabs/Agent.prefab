@@ -166,6 +166,8 @@ MonoBehaviour:
   maxHealth: 10
   health: 10
   damageColor: {r: 0.99215686, g: 0.36078432, b: 0.36078432, a: 1}
+  deathVfx: {fileID: 1278662723568746036, guid: 2f107f1cfacad3f4589f5ddc83f8ba16, type: 3}
+  destroyAfter: 1
 --- !u!114 &3416906572803987440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052cf4e8274c6ff439868e63d938d10d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IsVisible>k__BackingField: 1
   needToKill: 1
+  isMyPlayer: 0
 --- !u!114 &4111257482044373946
 MonoBehaviour:
   m_ObjectHideFlags: 0

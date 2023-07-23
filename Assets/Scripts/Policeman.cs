@@ -26,7 +26,7 @@ public class Policeman : Unit
 
     private void OnEnteredVisor(GameObject obj)
     {
-        if (obj.TryGetComponent(out Player player))
+        if (obj.TryGetComponent(out Player player) && player.IsVisible)
         {
             _shootTween?.Kill();
 

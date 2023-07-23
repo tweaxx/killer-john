@@ -1,4 +1,5 @@
 using System;
+using TweaxxGames.JamRaid;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -43,10 +44,15 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            UIManager.Instance.FadeIn(() =>
+            Utilities.DoActionDelayed(() =>
             {
-                SceneManager.Instance.LoadScene((SceneType)(int)Level + 1);
-            });
+                UIManager.Instance.FadeIn(() =>
+                {
+                    SceneManager.Instance.LoadScene((SceneType)(int)Level + 1);
+                });
+
+            }, 1f);
+            
         }
     }
 

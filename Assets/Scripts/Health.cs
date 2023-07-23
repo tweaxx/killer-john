@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        TakeDamage(1);
+        TakeDamage(100);
     }
 
     public void TakeDamage(int damage)

@@ -10,6 +10,8 @@ public class Unit : MonoBehaviour
     public Health Health { get; private set; }
     public MovementBase Movement { get; private set; }
 
+    public bool needToKill;
+
     protected virtual void Awake()
     {
         Health = GetComponent<Health>();
@@ -31,9 +33,12 @@ public class Unit : MonoBehaviour
         //transform.DOPunchScale(Vector3.one * 0.2f, 0.2f);
     }
 
-    private void OnDied()
+    protected virtual void OnDied()
     {
         gameObject.SetActive(false);
+
+        if (needToKill)
+            LevelManager.Instance.CheckIfComplete();
     }
 
     private void Start()

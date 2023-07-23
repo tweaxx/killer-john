@@ -10115,6 +10115,10 @@ PrefabInstance:
       propertyPath: waitMin
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4314638712416696496, guid: 20a77eddac8abab41944651ae5b47352, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1c9f8ba85f0f2ea458b6c195b3e380b1, type: 2}
     - target: {fileID: 7613145711270897634, guid: 20a77eddac8abab41944651ae5b47352, type: 3}
       propertyPath: m_Name
       value: Policeman

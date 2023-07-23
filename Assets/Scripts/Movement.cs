@@ -37,7 +37,7 @@ public class Movement : MovementBase
 
         _moveDirection = CanMove ? new Vector2(moveX, moveY).normalized : Vector2.zero;
 
-        if (_renderer != null && moveX != 0)
+        if (CanMove && _renderer != null && moveX != 0)
             _renderer.flipX = moveX < 0;
 
         IsMoving = CanMove && (_moveDirection.x != 0 || _moveDirection.y != 0);

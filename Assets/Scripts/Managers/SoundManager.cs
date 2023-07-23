@@ -30,6 +30,8 @@ public class SoundManager : MonoBehaviour
     public bool IsSoundOn { get; private set; } = true;
     public bool IsMusicOn { get; private set; } = true;
 
+    public float Volume { get; private set; } = 1f;
+
     [Header("Settings")]
     [SerializeField] private AudioSource oneShotSource;
     [SerializeField] private AudioSource musicSource;
@@ -39,12 +41,16 @@ public class SoundManager : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private List<SoundData> sounds = new List<SoundData>();
 
+    private SoundData _currentMusic;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            Volume = PlayerPrefs.GetFloat("volume", 1f);
         }
         else
         {
@@ -65,6 +71,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void SetVolume(float value)
+    {
+        Volume = value;
+        PlayerPrefs.SetFloat("volume", Volume);
+
+        musicSource.volume = _currentMusic != null ? _currentMusic.Volume * Volume : Volume;
+    }
+
     public void SetMusicState(bool isOn)
     {
         musicSource.mute = !isOn;
@@ -73,13 +87,14 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(SoundType type)
     {
-        var clip = GetSound(type);
+        var data = GetSound(type);
 
         //Debug.Log($"PlaySound: {type}, clip = {clip}");
 
-        if (clip != null)
+        if (data != null && data.Clip != null)
         {
-            oneShotSource.PlayOneShot(clip);
+            oneShotSource.volume = Volume * data.Volume;
+            oneShotSource.PlayOneShot(data.Clip);
         }
     }
 
@@ -93,26 +108,28 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(SoundType type)
     {
-        var clip = GetMusic(type);
-        if (clip != null)
+        var data = GetMusic(type);
+        if (data != null && data.Clip != null)
         {
-            musicSource.clip = clip;
+            _currentMusic = data;
+            musicSource.volume = Volume * data.Volume;
+            musicSource.clip = data.Clip;
             musicSource.Play();
         }
     }
 
-    public AudioClip GetSound(SoundType type)
+    public SoundData GetSound(SoundType type)
     {
         var list = sounds.FindAll(v => v.Type == type && v.Clip != null);
         if (list.Count > 0)
-            return list[Random.Range(0, list.Count)].Clip;
+            return list[Random.Range(0, list.Count)];
 
         return null;
     }
 
-    public AudioClip GetMusic(SoundType type)
+    public SoundData GetMusic(SoundType type)
     {
-        return music.Find(v => v.Type == type)?.Clip;
+        return music.Find(v => v.Type == type);
     }
 }
 

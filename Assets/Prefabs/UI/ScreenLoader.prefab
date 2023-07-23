@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   black: {fileID: 6435425391348398041}
   maxter: {fileID: 5827029358925331367}
-  duration: 1
+  duration: 0.5
   fadeInBlack: 30
   fadeInMaxter: 2
 --- !u!1 &6812092819354807221

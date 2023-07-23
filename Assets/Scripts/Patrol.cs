@@ -7,8 +7,12 @@ public class Patrol : MonoBehaviour
     [SerializeField] private float waitMax = 5;
 
     [Space]
+    [SerializeField] private Transform waypointsContainer;
+
+    [Space]
     [SerializeField] private float _currentTime;
     [SerializeField] private float _remainingDistance;
+    [SerializeField] private int _currentPointIndex;
 
     private AgentMovement _agentMovement;
 
@@ -30,9 +34,20 @@ public class Patrol : MonoBehaviour
         _currentTime = waitMax;
     }
 
-    public Vector2 GetRandomPoint()
+    private Vector2 GetRandomPoint()
     {
-        return (Vector2)transform.position + Random.insideUnitCircle * radius;
+        if (waypointsContainer == null || waypointsContainer.childCount == 0)
+        {
+            return (Vector2)transform.position + Random.insideUnitCircle * radius;
+        }
+        else
+        {
+            _currentPointIndex++;
+            if (_currentPointIndex >= waypointsContainer.childCount)
+                _currentPointIndex = 0;
+
+            return waypointsContainer.GetChild(_currentPointIndex).position;
+        }
     }
 
     private void Update()

@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
         Utilities.DoActionDelayed(CheckIfComplete, 0.5f);
     }
 
-    public void CompleteLevel()
+    public void CompleteLevel(bool wait = true)
     {
         if (SceneManager.Instance.IsLoading)
             return;
@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
                     SceneManager.Instance.LoadScene((SceneType)(int)Level + 1);
                 });
 
-            }, 1f);
+            }, wait ? 1f : 0);
             
         }
     }

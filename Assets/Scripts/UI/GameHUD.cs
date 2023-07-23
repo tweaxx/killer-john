@@ -4,11 +4,13 @@ using UnityEngine.UI;
 public class GameHUD : UIScreenBase
 {
     [SerializeField] private Button btnExit;
+    [SerializeField] private Button btnSkip;
     [SerializeField] private TMPro.TextMeshProUGUI goalLeft;
 
     private void Start()
     {
         btnExit.onClick.AddListener(Exit);
+        btnSkip.onClick.AddListener(Skip);
     }
 
     private void Update()
@@ -30,5 +32,10 @@ public class GameHUD : UIScreenBase
         {
             SceneManager.Instance.LoadScene(SceneType.Menu);
         });
+    }
+
+    private void Skip()
+    {
+        LevelManager.Instance.CompleteLevel(false);
     }
 }

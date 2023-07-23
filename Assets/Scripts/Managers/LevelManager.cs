@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public SceneType Level => level;
 
     [SerializeField] private SceneType level;
+    [SerializeField] private bool isFinal;
 
     private void Awake()
     {
@@ -26,15 +27,24 @@ public class LevelManager : MonoBehaviour
     {
         IsLevelComplete = false;
 
-        Debug.Log($"Level {Level} Started");
+        Debug.Log($"{Level} Started");
     }
 
     public void CompleteLevel()
     {
-        Debug.Log($"Level {Level} Complete!!!");
+        Debug.Log($"{Level} Complete!!! Final: {isFinal}");
 
         IsLevelComplete = true;
         OnLevelComplete?.Invoke();
+
+        if (isFinal)
+        {
+            //SceneManager.Instance.LoadScene(SceneType.Menu);
+        }
+        else
+        {
+            SceneManager.Instance.LoadScene((SceneType)(int)Level + 1);
+        }
     }
 
     public void Restart()
@@ -45,6 +55,8 @@ public class LevelManager : MonoBehaviour
     public void CheckIfComplete()
     {
         var unitsLeft = UnitManager.Instance.Units.FindAll(v => v != null && v.needToKill && v.Health.IsAlive);
+
+        Debug.Log($"unitsLeft: {unitsLeft.Count}");
 
         if (unitsLeft.Count <= 0)
             CompleteLevel();

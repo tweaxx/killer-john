@@ -7,8 +7,8 @@ public class Health : MonoBehaviour
     public event Action OnDied;
     public event Action OnDamaged;
 
-    public bool IsAlive => health > 0;
-    public bool IsDead => health <= 0;
+    public bool IsAlive => health > 0 && gameObject.activeInHierarchy;
+    public bool IsDead => health <= 0 || !gameObject.activeInHierarchy;
 
     [SerializeField] private int maxHealth;
     [SerializeField] private int health;

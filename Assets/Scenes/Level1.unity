@@ -70492,7 +70492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  isFinal: 0
+  isFinal: 1
 --- !u!4 &1703186750
 Transform:
   m_ObjectHideFlags: 0

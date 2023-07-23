@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ScreenLoader : MonoBehaviour
 {
-    [SerializeField] private Transform black, maxter;
+    [SerializeField] private Transform black, maxter, clock;
     [SerializeField] private float duration = 1f;
     [Space]
     [SerializeField] private float fadeInBlack = 10f;
@@ -18,10 +18,14 @@ public class ScreenLoader : MonoBehaviour
 
         black.DOKill();
         maxter.DOKill();
+        clock.DOKill();
 
+        clock.DOScale(1, duration/2);
         black.DOScale(fadeInBlack, duration);
         maxter.DOScale(fadeInMaxter, duration);
         maxter.DOLocalRotate(Vector3.forward * 360, duration, RotateMode.LocalAxisAdd);
+
+        SoundManager.Instance.PlaySound(SoundType.Clock);
     }
 
     public void FadeOut(Action callback = null)
@@ -35,7 +39,9 @@ public class ScreenLoader : MonoBehaviour
 
         black.DOKill();
         maxter.DOKill();
+        clock.DOKill();
 
+        clock.DOScale(0, duration);
         black.DOScale(0, duration);
         maxter.DOScale(0, duration);
         maxter.DOLocalRotate(Vector3.forward * -360, duration, RotateMode.LocalAxisAdd);

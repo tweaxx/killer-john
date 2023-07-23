@@ -92,6 +92,9 @@ MonoBehaviour:
   - Type: 8
     Clip: {fileID: 8300000, guid: 167fb6759f9ded24bb3a44502365cebb, type: 3}
     Volume: 1
+  - Type: 9
+    Clip: {fileID: 8300000, guid: bed0689701084784f98ca812218951d7, type: 3}
+    Volume: 1
 --- !u!1 &8554032008352776887
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public enum SoundType
     Attention = 6,
     ManScreamStart = 7,
     BloodBurst = 8,
+    Clock = 9,
 }
 
 [System.Serializable]

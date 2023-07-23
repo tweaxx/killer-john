@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public event Action<int> OnUnitsLeft;
+
     public static LevelManager Instance { get; private set; }
 
     public event Action OnLevelComplete;
@@ -29,6 +31,8 @@ public class LevelManager : MonoBehaviour
         IsLevelComplete = false;
 
         Debug.Log($"{Level} Started");
+
+        Utilities.DoActionDelayed(CheckIfComplete, 0.5f);
     }
 
     public void CompleteLevel()
@@ -65,7 +69,7 @@ public class LevelManager : MonoBehaviour
     {
         var unitsLeft = UnitManager.Instance.Units.FindAll(v => v != null && v.needToKill && v.Health.IsAlive);
 
-        Debug.Log($"unitsLeft: {unitsLeft.Count}");
+        OnUnitsLeft?.Invoke(unitsLeft.Count);
 
         if (unitsLeft.Count <= 0)
             CompleteLevel();

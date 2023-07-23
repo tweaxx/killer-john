@@ -37,6 +37,9 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        if (SceneManager.Instance.IsLoading)
+            return;
+
         Debug.Log($"{Level} Complete!!! Final: {isFinal}");
 
         IsLevelComplete = true;

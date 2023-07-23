@@ -71466,6 +71466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Policeman
       objectReference: {fileID: 0}
+    - target: {fileID: 8715548865868315920, guid: 873dfb6b19d75af4088d472fd766a9b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8715548865868315921, guid: 873dfb6b19d75af4088d472fd766a9b6, type: 3}
       propertyPath: m_RootOrder
       value: 1

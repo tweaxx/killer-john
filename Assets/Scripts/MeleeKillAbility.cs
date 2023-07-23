@@ -64,6 +64,9 @@ public class MeleeKillAbility : MonoBehaviour
             target = closest != null && IsInRange(closest) ? closest : null;
         }
 
+        if (owner is Killer && target is Policeman)
+            return;
+
         var wasKilling = isKilling;
         isKilling = IsInRange(target);
 
@@ -81,6 +84,9 @@ public class MeleeKillAbility : MonoBehaviour
             }
             {
                 target.SetMovementState(false);
+
+                if (target is Player)
+                    flipX = !flipX;
 
                 target.transform.position = transform.position + (flipX ? -targetOffset : targetOffset);
                 target.Movement.SetFlipX(flipX);

@@ -1,3 +1,5 @@
+using DG.Tweening;
+using TweaxxGames.JamRaid;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,6 +18,8 @@ public class AgentMovement : MovementBase
 
     private Vector3 _normalScale = Vector3.one;
     private Vector3 _flippedScale = new Vector3(-1,1,1);
+
+    private Sequence _flipCooldown;
 
     protected override void Awake()
     {
@@ -44,9 +48,11 @@ public class AgentMovement : MovementBase
         SetTargetPosition();
         SetAgentPosition();
 
-        if (_agent.velocity.x != 0 && CanMove)
+        if (_agent.velocity.x != 0 && CanMove && _flipCooldown == null)
         {
             transform.localScale = _agent.velocity.x < 0 ? _flippedScale : _normalScale;
+
+            _flipCooldown = Utilities.DoActionDelayed(() => { _flipCooldown = null; }, 0.5f);
 
             if (debug)
                 Debug.Log($"flipx: {(_agent.velocity.x < 0)}");

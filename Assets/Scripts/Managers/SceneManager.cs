@@ -16,6 +16,8 @@ public class SceneManager : MonoBehaviour
 
     public event Action<SceneType> OnSceneLoaded;
 
+    public bool IsLoading { get; private set; }
+
     public SceneType CurrentScene { get; private set; } = SceneType.Menu;
     public SceneType TargetScene { get; private set; } = SceneType.Menu;
 
@@ -55,6 +57,7 @@ public class SceneManager : MonoBehaviour
     {
         Debug.Log($"Scene loaded: {scene.name}");
 
+        IsLoading = false;
         CurrentScene = TargetScene;
         OnSceneLoaded?.Invoke(CurrentScene);
 
@@ -79,6 +82,10 @@ public class SceneManager : MonoBehaviour
 
     public void LoadScene(SceneType type)
     {
+        if (IsLoading)
+            return;
+
+        IsLoading = true;
         TargetScene = type;
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(type.ToString());
     }

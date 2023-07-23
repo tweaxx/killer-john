@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TweaxxGames.JamRaid;
 using UnityEngine;
 
 
@@ -95,8 +96,7 @@ public class SoundManager : MonoBehaviour
 
         if (data != null && data.Clip != null)
         {
-            oneShotSource.volume = Volume * data.Volume;
-            oneShotSource.PlayOneShot(data.Clip);
+            oneShotSource.PlayOneShot(data.Clip, Volume * data.Volume);
         }
     }
 

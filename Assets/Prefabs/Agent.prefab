@@ -111,7 +111,7 @@ NavMeshAgent:
   m_Height: 0.24
   m_BaseOffset: 0.32
   m_WalkableMask: 1
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!95 &4314638712416696496
 Animator:
   serializedVersion: 4
@@ -151,6 +151,7 @@ MonoBehaviour:
   _runAwayRadius: 5
   _renderer: {fileID: 7613145711270897660}
   useInput: 0
+  debug: 0
 --- !u!114 &7613145711270897663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IsVisible>k__BackingField: 1
+  <IsProvoked>k__BackingField: 0
   needToKill: 1
   isMyPlayer: 0
 --- !u!114 &4111257482044373946

@@ -28,9 +28,6 @@ public class LevelManager : MonoBehaviour
         IsLevelComplete = false;
 
         Debug.Log($"{Level} Started");
-
-        if (UIManager.Instance != null)
-            UIManager.Instance.FadeOut();
     }
 
     public void CompleteLevel()
@@ -42,17 +39,20 @@ public class LevelManager : MonoBehaviour
 
         if (isFinal)
         {
-            //SceneManager.Instance.LoadScene(SceneType.Menu);
+            UIManager.Instance.Show<VictoryScreen>();
         }
         else
         {
-            SceneManager.Instance.LoadScene((SceneType)(int)Level + 1);
+            UIManager.Instance.FadeIn(() =>
+            {
+                SceneManager.Instance.LoadScene((SceneType)(int)Level + 1);
+            });
         }
     }
 
     public void Restart()
     {
-        SceneManager.Instance.LoadScene(Level);
+        UIManager.Instance.Show<GameOver>();
     }
 
     public void CheckIfComplete()

@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameHUD : UIScreenBase
+public class VictoryScreen : UIScreenBase
 {
-    [SerializeField] private Button btnExit;
+    [SerializeField] private Button btnPlay;
 
     private void Start()
     {
-        btnExit.onClick.AddListener(Exit);
+        btnPlay.onClick.AddListener(StartGame);
     }
 
-    private void Exit()
+    private void StartGame()
     {
         UIManager.Instance.FadeIn(() =>
         {

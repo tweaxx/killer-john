@@ -68,10 +68,13 @@ public class SceneManager : MonoBehaviour
                 SoundManager.Instance.PlayMusic(SoundType.MenuMusic);
                 break;
             default:
+                UIManager.Instance.Show<GameHUD>();
                 LevelManager.Instance.StartLevel();
                 SoundManager.Instance.PlayMusic(SoundType.GameplayMusic);
                 break;
         }
+
+        UIManager.Instance.FadeOut();
     }
 
     public void LoadScene(SceneType type)

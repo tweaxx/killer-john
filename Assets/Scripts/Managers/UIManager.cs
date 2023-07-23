@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            screens = GetComponentsInChildren<UIScreenBase>().ToList();
+            screens = GetComponentsInChildren<UIScreenBase>(true).ToList();
         }
         else
         {

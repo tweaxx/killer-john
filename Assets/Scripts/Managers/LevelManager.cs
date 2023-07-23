@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public event Action OnLevelComplete;
     public bool IsLevelComplete { get; private set; }
     public SceneType Level => level;
+    public int UnitsLeft { get; private set; }
 
     [SerializeField] private SceneType level;
     [SerializeField] private bool isFinal;
@@ -71,6 +72,7 @@ public class LevelManager : MonoBehaviour
     public void CheckIfComplete()
     {
         var unitsLeft = UnitManager.Instance.Units.FindAll(v => v != null && v.needToKill && v.Health.IsAlive);
+        UnitsLeft = unitsLeft.Count;
 
         OnUnitsLeft?.Invoke(unitsLeft.Count);
 

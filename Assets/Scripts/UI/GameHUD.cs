@@ -9,14 +9,14 @@ public class GameHUD : UIScreenBase
     private void Start()
     {
         btnExit.onClick.AddListener(Exit);
-
-        LevelManager.Instance.OnUnitsLeft += OnUnitsLeft;
     }
 
-    private void OnDestroy()
+    private void Update()
     {
         if (LevelManager.Instance != null)
-            LevelManager.Instance.OnUnitsLeft -= OnUnitsLeft;
+        {
+            OnUnitsLeft(LevelManager.Instance.UnitsLeft);
+        }
     }
 
     private void OnUnitsLeft(int value)

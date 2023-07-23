@@ -148,7 +148,7 @@ MonoBehaviour:
   <IsMoving>k__BackingField: 0
   _speed: 0.7
   _runAwaySpeed: 1.4
-  _runAwayRadius: 5
+  _runAwayRadius: 10
   _renderer: {fileID: 7613145711270897660}
   useInput: 0
   debug: 0

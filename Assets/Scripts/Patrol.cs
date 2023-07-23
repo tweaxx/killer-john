@@ -31,7 +31,7 @@ public class Patrol : MonoBehaviour
 
     public void Timeout()
     {
-        _currentTime = waitMax;
+        SetTime();
     }
 
     private Vector2 GetRandomPoint()

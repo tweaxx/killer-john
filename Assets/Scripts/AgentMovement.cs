@@ -100,7 +100,8 @@ public class AgentMovement : MovementBase
 
             if (gameObject.activeInHierarchy)
             {
-                _agent.SetDestination((Random.insideUnitCircle + Vector2.one * 0.5f) * _runAwayRadius);
+                _agent.isStopped = false;
+                _agent.SetDestination(Random.insideUnitCircle * _runAwayRadius);
                 _agent.speed = RunAwaySpeed;
             }
 

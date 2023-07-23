@@ -7,6 +7,7 @@ public class MeleeKillAbility : MonoBehaviour
 {
     [SerializeField] private float struggleFreeTime = 1f;
     [SerializeField] private float usageRadius = 3f;
+    [SerializeField] private float scareRadius = 3f;
     [SerializeField] private int damage = 1;
 
     [Space]
@@ -103,6 +104,20 @@ public class MeleeKillAbility : MonoBehaviour
             _struggleFreeTween = Utilities.DoActionDelayed(ResetTarget, struggleFreeTime);
 
             SoundManager.Instance.PlaySound(SoundType.ManScreamStart);
+
+            ScareNearbyTargets();
+        }
+    }
+
+    private void ScareNearbyTargets()
+    {
+        if (!owner.IsVisible)
+            return;
+
+        foreach (var item in UnitManager.Instance.Units)
+        {
+            if (item != target && item != owner && IsInScareRange(item))
+                item.Movement.RunAway();
         }
     }
 
@@ -129,10 +144,20 @@ public class MeleeKillAbility : MonoBehaviour
 
     private bool IsInRange(Unit unit)
     {
-        if (unit == null || unit.Health.IsDead)
+        return IsInRangeInternal(unit, usageRadius);
+    }
+
+    private bool IsInScareRange(Unit unit)
+    {
+        return IsInRangeInternal(unit, scareRadius);
+    }
+
+    private bool IsInRangeInternal(Unit unit, float radius)
+    {
+        if (unit == null || unit.Health.IsDead || !unit.gameObject.activeInHierarchy)
             return false;
 
-        return Vector2.Distance(unit.transform.position, transform.position) <= usageRadius;
+        return Vector2.Distance(unit.transform.position, transform.position) <= radius;
     }
 
     private void OnDrawGizmosSelected()

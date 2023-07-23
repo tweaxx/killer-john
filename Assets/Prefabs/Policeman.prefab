@@ -10011,6 +10011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73203020d63abe04c90930df901837f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1797295631
 GameObject:
   m_ObjectHideFlags: 0
@@ -10210,9 +10211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c6e5091363b0c499ad7f1bb424566c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needToKill: 0
   visor: {fileID: 1252868197}
   gun: {fileID: 352210067}
-  timeToShoot: 0.3
+  timeToShoot: 0.4
   canShoot: 0
 --- !u!4 &8715548865868315921 stripped
 Transform:

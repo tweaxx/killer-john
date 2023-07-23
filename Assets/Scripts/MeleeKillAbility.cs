@@ -87,6 +87,8 @@ public class MeleeKillAbility : MonoBehaviour
 
             _struggleFreeTween?.Kill();
             _struggleFreeTween = Utilities.DoActionDelayed(ResetTarget, struggleFreeTime);
+
+            SoundManager.Instance.PlaySound(SoundType.ManScreamStart);
         }
     }
 
@@ -104,6 +106,9 @@ public class MeleeKillAbility : MonoBehaviour
         _animator.ResetTrigger(KILL);
 
         target.Movement.RunAway();
+
+        if (target.Health.IsAlive)
+            SoundManager.Instance.PlaySound(SoundType.ManScream);
 
         target = null;
     }

@@ -8,9 +8,10 @@ public enum SoundType
     UIClickNegative = 1,
     MenuMusic = 2,
     GameplayMusic = 3,
-    QuestUpdated = 4,
-    EndScreenMusic = 5,
-    ScareSound = 6,
+    PistolShoot = 4,
+    ManScream = 5,
+    Attention = 6,
+    ManScreamStart = 7,
 }
 
 [System.Serializable]
@@ -102,7 +103,11 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip GetSound(SoundType type)
     {
-        return sounds.Find(v => v.Type == type)?.Clip;
+        var list = sounds.FindAll(v => v.Type == type && v.Clip != null);
+        if (list.Count > 0)
+            return list[Random.Range(0, list.Count)].Clip;
+
+        return null;
     }
 
     public AudioClip GetMusic(SoundType type)

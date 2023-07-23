@@ -32,9 +32,16 @@ public class Policeman : Unit
 
             // if spotted 2nd time
             if (_shootTween != null)
+            {
                 Shoot();
+            }
             else
+            {
+                visor.BlinkAnimation();
                 _shootTween = Utilities.DoActionDelayed(Shoot, timeToShoot);
+
+                SoundManager.Instance.PlaySound(SoundType.Attention);
+            }
         }
     }
 
@@ -49,5 +56,7 @@ public class Policeman : Unit
     {
         gun.Play();
         _shootTween = null;
+
+        SoundManager.Instance.PlaySound(SoundType.PistolShoot);
     }
 }

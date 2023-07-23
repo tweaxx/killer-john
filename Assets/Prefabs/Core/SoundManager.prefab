@@ -55,7 +55,40 @@ MonoBehaviour:
   - Type: 3
     Clip: {fileID: 8300000, guid: 8a39bac0a6770014d832c54e523c98e9, type: 3}
     Volume: 0.15
-  sounds: []
+  sounds:
+  - Type: 0
+    Clip: {fileID: 8300000, guid: c2df5c295e317664f93a8b3eb23f504c, type: 3}
+    Volume: 1
+  - Type: 1
+    Clip: {fileID: 8300000, guid: 9243d81b9602e5a4a991ef016f5e68d9, type: 3}
+    Volume: 1
+  - Type: 5
+    Clip: {fileID: 8300000, guid: f779416079053ba4db709abcc4e59106, type: 3}
+    Volume: 1
+  - Type: 4
+    Clip: {fileID: 8300000, guid: d2258494f41ab0342808682de5ebf536, type: 3}
+    Volume: 1
+  - Type: 6
+    Clip: {fileID: 8300000, guid: 7baba0cfb97691542a717ba1bc50213e, type: 3}
+    Volume: 1
+  - Type: 7
+    Clip: {fileID: 8300000, guid: ae545a5129d53e14e98fcb630845dacb, type: 3}
+    Volume: 1
+  - Type: 7
+    Clip: {fileID: 8300000, guid: 38b1ab495ecf35b4dab4b1c188ef09ed, type: 3}
+    Volume: 1
+  - Type: 7
+    Clip: {fileID: 8300000, guid: 086c8582404d14d40bbd921695559d38, type: 3}
+    Volume: 1
+  - Type: 7
+    Clip: {fileID: 8300000, guid: 4d30dfa4e9041b14ea791582a9ffbf0f, type: 3}
+    Volume: 1
+  - Type: 7
+    Clip: {fileID: 8300000, guid: 68785393d4220c647a20951fdaf20d17, type: 3}
+    Volume: 1
+  - Type: 7
+    Clip: {fileID: 8300000, guid: 2e832e3a12adbeb49b36d7272910e87a, type: 3}
+    Volume: 1
 --- !u!1 &8554032008352776887
 GameObject:
   m_ObjectHideFlags: 0

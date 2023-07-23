@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
+    [SerializeField] private ScreenLoader loader;
     public List<UIScreenBase> screens = new List<UIScreenBase>();
 
     private void Awake()
@@ -33,12 +33,12 @@ public class UIManager : MonoBehaviour
 
     public void FadeIn(Action callback)
     {
-        callback?.Invoke();
+        loader.FadeIn(callback);
     }
 
     public void FadeOut(Action callback = null)
     {
-        callback?.Invoke();
+        loader.FadeOut(callback);
     }
 
     public void Show<T>() where T : UIScreenBase

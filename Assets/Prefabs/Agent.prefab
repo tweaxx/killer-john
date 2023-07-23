@@ -110,7 +110,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 0.6
   m_BaseOffset: 0.32
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!95 &4314638712416696496
 Animator:

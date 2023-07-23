@@ -43,10 +43,10 @@ public class SoundManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.LogError($"SoundManager Instance already exists!");
             Destroy(gameObject);
         }
     }

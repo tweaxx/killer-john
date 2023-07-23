@@ -49,6 +49,9 @@ MonoBehaviour:
   oneShotSource: {fileID: 8554032008902179831}
   musicSource: {fileID: 8554032008352776872}
   music:
+  - Type: 2
+    Clip: {fileID: 8300000, guid: 8a39bac0a6770014d832c54e523c98e9, type: 3}
+    Volume: 0.15
   - Type: 3
     Clip: {fileID: 8300000, guid: 8a39bac0a6770014d832c54e523c98e9, type: 3}
     Volume: 0.15

@@ -28,6 +28,9 @@ public class LevelManager : MonoBehaviour
         IsLevelComplete = false;
 
         Debug.Log($"{Level} Started");
+
+        if (UIManager.Instance != null)
+            UIManager.Instance.FadeOut();
     }
 
     public void CompleteLevel()

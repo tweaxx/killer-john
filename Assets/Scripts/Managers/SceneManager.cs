@@ -64,6 +64,7 @@ public class SceneManager : MonoBehaviour
         switch (CurrentScene)
         {
             case SceneType.Menu:
+                UIManager.Instance.Show<Menu>();
                 SoundManager.Instance.PlayMusic(SoundType.MenuMusic);
                 break;
             default:
